@@ -12,5 +12,27 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+$(document).ready(function(){
+
+  var codeScript = gon.codeScript;
+
+  var codeArray = codeScript.split('');
+
+  var inputArray;
+
+  $(".btn").click(function(){
+    var inputScript = $('.script-input').val();
+    var inputArray = inputScript.split('');
+    console.log(inputArray);
+    return inputArray;
+  });
+
+  if (inputArray === codeArray){
+    alert("Hooray");
+  } else {
+    alert("Too bad");
+  };
+});
