@@ -22,42 +22,38 @@ $(document).ready(function(){
 
   var codeArray = codeScript.split('');
 
-// second iteration
-  // var count = -1;
-  // var inputArray = [];
-  //
-  // $('.script-input').keyup(function(){
-  //
-  //     count += 1;
-  //     var textInput = $(this).val();
-  //     inputArray.push(textInput[textInput.length - 1]);
-  //     console.log(inputArray);
-  //
-  //   if (inputArray[count] == codeArray[count]){
-  //     $('.output').append("<span>J</span>");
-  //   }else{
-  //     $('.output').append("<span>X</span>");
-  //   };
-  // });
-  // end, second iteration
+// Speed view, first iteration
+  var count = -1;
+  var inputArray = [];
 
-//first iteration
-  $('.submit').click(function(){
-    var inputScript = $('.script-input').val();
-    var inputArray = inputScript.split('');
-    console.log(inputArray);
-    console.log(codeArray);
+  $('.script-input').keydown(function(){
 
-    //return inputArray;
+      count += 1;
+      var textInput = $(this).val();
+      inputArray.push(textInput[textInput.length -1]);
+      console.log(inputArray);
 
-    if (codeArray == inputArray){
-      alert("Hooray");
-    } else {
-      alert("Too bad");
+    if (inputArray[count] == codeArray[count]){
+      $('.output').append("<span>J</span>");
+    }else{
+      $('.output').append("<span>X</span>");
     };
   });
-  
-//end, first iteration
+  // end, first iteration
+
+//Accuracy view
+  // $('.submit').click(function(){
+  //   var inputScript = $('.script-input').val();
+  //   var inputArray = inputScript.split('');
+  //
+  //   if (codeArray.join() == inputArray.join()){
+  //     alert("Hooray");
+  //   } else {
+  //     alert("Too bad");
+  //   };
+  // });
+
+//end, accuracy iteration
 
 
 });
