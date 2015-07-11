@@ -14,7 +14,13 @@ exit Minitest.run(ARGV)", "ruby", "Rails Team"],
 ["for (var i = 1; i <= 100; i++) {
   var f = i % 3 == 0, b = i % 5 == 0;
   console.log(f ? b ? 'FizzBuzz' : 'Fizz' : b ? 'Buzz' : i);
-}", "javascript", "Paul Irish"]
+}", "javascript", "Paul Irish"],
+["for", "javascript", "Me"],
+["for", "javascript", "Me"],
+["for", "javascript", "Me"],
+["for", "javascript", "Me"],
+["for", "javascript", "Me"],
+["for", "javascript", "Me"]
 ]
 
 code_list.each do |script, lang, author|

@@ -12,48 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require timer
+//= require typist
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){
-
-  var codeScript = gon.codeScript;
-
-  var codeArray = codeScript.split('');
-
-// Speed view, first iteration
-  var count = -1;
-  var inputArray = [];
-
-  $('.script-input').keydown(function(){
-
-      count += 1;
-      var textInput = $(this).val();
-      inputArray.push(textInput[textInput.length -1]);
-      console.log(inputArray);
-
-    if (inputArray[count] == codeArray[count]){
-      $('.output').append("<span>J</span>");
-    }else{
-      $('.output').append("<span>X</span>");
-    };
-  });
-  // end, first iteration
-
-//Accuracy view
-  // $('.submit').click(function(){
-  //   var inputScript = $('.script-input').val();
-  //   var inputArray = inputScript.split('');
-  //
-  //   if (codeArray.join() == inputArray.join()){
-  //     alert("Hooray");
-  //   } else {
-  //     alert("Too bad");
-  //   };
-  // });
-
-//end, accuracy iteration
-
-
-});
