@@ -1,17 +1,13 @@
 class CodesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:show]
+
+  def index
+  end
+
   def show
     @code = Code.order_by_rand.first
     gon.codeScript = @code.script
-    # respond_to do |format|
-    #   #format.html
-    #   #format.json { render json: @code.script }
-    #   format.json { render json: @code, only: [:script] }
-    # end
-
-    #render :json @code.script
-    #format.js   { render }
-
   end
 
 end
