@@ -1,9 +1,11 @@
-<%= form_tag sessions_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
-  <br>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <br>
-  <%= submit_tag "Log in" %>
-<% end %>
+<h1>Sign In</h1>
+<div class="form-group">
+  <%= form_tag sessions_path do %>
+    <%= label_tag :email %>
+    <%= email_field_tag :email, params[:email], class: 'form-control' %>
+    <br>
+    <%= label_tag :password %>
+    <%= password_field_tag :password, '', class: "form-control" %>
+    <%= submit_tag "Log in" %>
+  <% end %>
+</div>

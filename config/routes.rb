@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'codes#show'
+  root 'codes#index'
 
   resources :users
   resources :sessions, only: [:new, :create]
