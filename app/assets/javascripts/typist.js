@@ -47,7 +47,7 @@ $(document).ready(function(){
 
      if (inputArray.join() == codeArray.join()){
        compute(inputTime);
-       alert("Good Job.  Speed = " + speed + "WPM.  Error Rate = " + errorRate);
+       alert("Good Job.  Speed = " + speed + "WPM.  Error Rate = " + errorRate +"%");
      }else{
        alert("Fix it");
      };
@@ -56,8 +56,11 @@ $(document).ready(function(){
 
   function compute(time){
     speed = wordCount / time * 60;
-    errorRate = codeArray.length/errorCount;
-    debugger
+    if (errorCount == 0){
+      errorRate = 0;
+    }else{
+      errorRate = codeArray.length/errorCount;
+    }
     return speed, errorRate;
   };
 
