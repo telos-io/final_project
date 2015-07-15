@@ -24,8 +24,8 @@ RSpec.describe SessionsController, type: :controller do
           expect(session[:user_id]).to eq(@user.id)
         end
 
-        it "redirects to the root page" do
-          expect(response).to redirect_to root_path
+        it "redirects to the user page" do
+          expect(response).to redirect_to user_path(@user)
         end
 
         it "sets a flash message" do

@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -23,7 +23,7 @@
  }
 
  .script-input{
-   width:75%;
+   width:100%;
    height:200px;
    margin:auto;
  }

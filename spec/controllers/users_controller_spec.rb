@@ -30,9 +30,9 @@ RSpec.describe UsersController, type: :controller do
         expect { valid_request }.to change { User.count }.by(1)
       end
 
-      it "redirects to root path" do
+      it "redirects to user path" do
         valid_request
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to user_path(User.last.id)
       end
 
       it "sets the session[:user_id] to be the created user id" do
