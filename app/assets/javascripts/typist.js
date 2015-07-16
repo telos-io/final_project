@@ -16,21 +16,13 @@ $(document).ready(function(){
 
   $.each(codeArray, function( key, value ){
     $('#current-script').append('<span>' + value + '</span>');
-    //codeArrayCount += 1;
   });
 
   $('.script-input').focus(function(){
     $('#timer').timer();
   });
 
-  // var output = function(inputCount){
-  //   while (var j = 0; j <= codeArray.length; j += 1){
-  //     $('current-script').append('<span>'codeArray[j]'</span>');
-  //   };
-  // };
-
-
-  $('.script-input').keyup(function(){
+  $('.script-input').keydown(function(){
      textInput = $(this).val();
      var keyCode = event.keyCode;
         if (keyCode == 16){
@@ -44,20 +36,23 @@ $(document).ready(function(){
           return count;
       };
   });
-
+  //comapres input to code
   function compare(inputArray, codeArray){
     var num = count - 1;
-        if (inputArray[num] === codeArray[num]){
-          $("#current-script span").eq(num).addClass("green");
-          //stays green
-        }else{
-          $("#current-script span").eq(num).addClass("red");
-          //change red
-          errorCount += 1;
-        };
-        return errorCount;
+    console.log("inputArray[num]: " + inputArray[num]);
+    console.log("codeArray[num]: " + codeArray[num]);
+    if (inputArray[num] === codeArray[num]){
+      $("#current-script span").eq(num).addClass("green");
+      $("#current-script span").eq(num).removeClass("red");
+      //stays green
+    }else{
+      $("#current-script span").eq(num).addClass("red");
+      //change red
+      errorCount += 1;
+    };
+    return errorCount;
   };
-
+  //click submit and computes the scores
   $('.submit').on('click', function() {
     $('#timer').timer('pause');
     inputTime = $('#timer').data('seconds');
@@ -65,7 +60,7 @@ $(document).ready(function(){
      if (inputArray.join() == codeArray.join()){
        computeWPM(inputTime);
        computeErrorRate(errorCount);
-       alert("Good Job.  Speed = " + speed + "WPM.  Error Rate = " + errorRate +"%");
+       alert("Good Job.  Speed = " + speed + " WPM.  Error Rate = " + errorRate +"%");
      }else{
        alert("Fix it");
      };
@@ -85,8 +80,6 @@ $(document).ready(function(){
     }
     return errorRate;
   };
-
-//compare(inputArray, codeArray);
 
   // end, first iteration
 
