@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'gon'
 gem 'simple_form'
 gem 'newrelic_rpm'
+gem 'rails_12factor'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
