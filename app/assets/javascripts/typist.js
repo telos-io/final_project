@@ -38,19 +38,20 @@ $(document).ready(function(){
         }else{
           inputArray = textInput.split('');
           count = inputArray.length;
-          $(this).toggleClass("active");
+          $("#current-script span").eq(count).addClass("active");
+          $("#current-script span").eq(count - 1).removeClass("active");
           compare(inputArray, codeArray);
           return count;
       };
   });
 
   function compare(inputArray, codeArray){
-    //$('<span>' + inputArray[count] + '</span>').addClass("active")
-        if (inputArray[count - 1] == codeArray[count - 1]){
-          $(inputArray[count - 1]).toggleClass("green");
+    var num = count - 1;
+        if (inputArray[num] === codeArray[num]){
+          $("#current-script span").eq(num).addClass("green");
           //stays green
         }else{
-          $('#current-script').toggleClass("red");
+          $("#current-script span").eq(num).addClass("red");
           //change red
           errorCount += 1;
         };
