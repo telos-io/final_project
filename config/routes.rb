@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :codes
+
+  resources :codes, only: [:show]
 
   root 'codes#index'
 
-  resources :users
+  resources :users do
+    resources :rounds, only: [:new, :create]
+  end
 
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713171658) do
+ActiveRecord::Schema.define(version: 20150719165341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20150713171658) do
     t.string   "github"
   end
 
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "code_id"
+    t.integer  "user_id"
+    t.integer  "wpm"
+    t.integer  "accuracy"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rounds", ["code_id"], name: "index_rounds_on_code_id", using: :btree
+  add_index "rounds", ["user_id"], name: "index_rounds_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -34,4 +47,6 @@ ActiveRecord::Schema.define(version: 20150713171658) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "rounds", "codes"
+  add_foreign_key "rounds", "users"
 end

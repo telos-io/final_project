@@ -15,5 +15,4 @@
 //= require timer
 //= require typist
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .

@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+if (!gon.codeScript){
+  return;
+}
   var codeScript = gon.codeScript;
 
   var codeArray = codeScript.split('');
@@ -39,16 +42,18 @@ $(document).ready(function(){
   //comapres input to code
   function compare(inputArray, codeArray){
     var num = count - 1;
-    console.log("inputArray[num]: " + inputArray[num]);
-    console.log("codeArray[num]: " + codeArray[num]);
-    if (inputArray[num] === codeArray[num]){
-      $("#current-script span").eq(num).addClass("green");
-      $("#current-script span").eq(num).removeClass("red");
-      //stays green
-    }else{
-      $("#current-script span").eq(num).addClass("red");
-      //change red
-      errorCount += 1;
+    // console.log("inputArray[num]: " + inputArray[num]);
+    // console.log("codeArray[num]: " + codeArray[num]);
+    $.each(inputArray[num], function()){
+      if (inputArray.join() === codeArray.join()){
+        $("#current-script span").eq(num).addClass("green");
+        $("#current-script span").eq(num).removeClass("red");
+        //stays green
+      }else{
+        $("#current-script span").eq(num).addClass("red");
+        //change red
+        errorCount += 1;
+      };
     };
     return errorCount;
   };

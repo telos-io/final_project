@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @round = @user.rounds_for(:user_id)
+
   end
 
   private
