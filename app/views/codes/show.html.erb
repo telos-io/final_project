@@ -1,24 +1,22 @@
 
 <h2>Sample Code</h2>
 <div id="timer"></div>
-<pre><div id="current-script">
+<pre id="current-script">
 <%#= render "code.json.erb" %>
-</div>
 </pre>
 
 <form>
   <textarea class="script-input"></textarea>
 </form>
 
-<button class="btn btn-default submit myModal">Submit</button>
+<!--button class="btn btn-default submit myModal">Submit</button>-->
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
+<button type="button" class="btn btn-primary btn-lg submit">
+Coolcoolcool</button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -26,11 +24,11 @@
         <h4 class="modal-title" id="myModalLabel">Scores</h4>
       </div>
       <div class="modal-body">
-         <p>WPM: Speed</p>
-         <p>Error Rate: errorRate </p>
+         <p>WPM: <span id="wpm"></span></p>
+         <p>Error Rate: <span id="accuracy"></span></p>
       </div>
       <div class="form control">
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -38,4 +36,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

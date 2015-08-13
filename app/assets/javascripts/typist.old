@@ -8,7 +8,7 @@ if (!gon.codeScript){
   var codeArray = codeScript.split('');
 
 // Speed view, first iteration
-  var count = 0;
+  var count = -1;
   var codeArrayCount = 0;
   var inputArray = [];
   var textInput;
@@ -25,26 +25,30 @@ if (!gon.codeScript){
     $('#timer').timer();
   });
 
-  $('.script-input').keydown(function(){
-     textInput = $(this).val();
-     var keyCode = event.keyCode;
-        if (keyCode == 16){
-          return;
-        }else{
-          inputArray = textInput.split('');
-          count = inputArray.length;
-          $("#current-script span").eq(count).addClass("active");
-          $("#current-script span").eq(count - 1).removeClass("active");
-          compare(inputArray, codeArray);
-          return count;
-      };
-  });
+    $('.script-input').keydown(function(){
+       textInput = $(this).val();
+       var keyCode = event.keyCode;
+          if (keyCode == 16){
+            return;
+          }else{
+            inputArray = textInput.split('');
+            //arrays start from zero, length from 1
+            count = inputArray.length - 1;
+            console.log(inputArray);
+            $("#current-script span").eq(count).addClass("active");
+            $("#current-script span").eq(count - 1).removeClass("active");
+            compare(inputArray, codeArray);
+            //debugger
+            return count;
+        };
+    });
+
   //comapres input to code
   function compare(inputArray, codeArray){
-    var num = count - 1;
-    // console.log("inputArray[num]: " + inputArray[num]);
-    // console.log("codeArray[num]: " + codeArray[num]);
-    $.each(inputArray[num], function()){
+    var num = count;
+    console.log("inputArray[num]: " + inputArray[num]);
+    console.log("codeArray[num]: " + codeArray[num]);
+    for (var i = 0; i <= inputArray.length; i++){
       if (inputArray.join() === codeArray.join()){
         $("#current-script span").eq(num).addClass("green");
         $("#current-script span").eq(num).removeClass("red");
@@ -53,23 +57,28 @@ if (!gon.codeScript){
         $("#current-script span").eq(num).addClass("red");
         //change red
         errorCount += 1;
+        return errorCount;
       };
+      return count;
     };
-    return errorCount;
   };
   //click submit and computes the scores
   $('.submit').on('click', function() {
     $('#timer').timer('pause');
     inputTime = $('#timer').data('seconds');
-
-     if (inputArray.join() == codeArray.join()){
-       computeWPM(inputTime);
-       computeErrorRate(errorCount);
-       alert("Good Job.  Speed = " + speed + " WPM.  Error Rate = " + errorRate +"%");
-     }else{
-       alert("Fix it");
-     };
-     return inputTime;
+    $('#myModal').on('shown.bs.modal', function () {
+     $('#myInput').focus()
+       if (inputArray.join() == codeArray.join()){
+         computeWPM(inputTime);
+         computeErrorRate(errorCount);
+           $('#wpm').val(speed);
+           $('#accuracy').val(errorRate);
+        //  alert("Good Job.  Speed = " + speed + " WPM.  Error Rate = " + errorRate +"%");
+       }else{
+         alert("Fix it");
+       };
+       return inputTime;
+   });
   });
 
   function computeWPM(time){

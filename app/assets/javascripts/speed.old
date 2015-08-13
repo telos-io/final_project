@@ -1,0 +1,129 @@
+$(document).ready(function(){
+
+if (!gon.codeScript){
+  return;
+}
+  var codeScript = gon.codeScript;
+
+  var codeArray = codeScript.split('');
+
+// Speed view, first iteration
+  var count = -1;
+  var codeArrayCount = 0;
+  var inputArray = [];
+  var textInput;
+  var wordCount = codeArray.length / 5;
+  var inputTime;
+  var errorCount = 0;
+  var errorRate;
+
+
+  // $.each(codeArray, function( key, value ){
+  //   $('#current-script').append('<span>' + value + '</span>');
+  // });
+
+  $('.script-input').focus(function(){
+    $('#timer').timer();
+  });
+
+    $('.script-input').keydown(function(){
+       textInput = $(this).val();
+       var keyCode = event.keyCode;
+          if (keyCode == 16){
+            return;
+          }else{
+            inputArray = textInput.split('');
+            var html = "";
+            for(var i = 0; i < codeArray.length, i++){
+              if(inputArray.length === (i + 2)){
+                html = html + "<span class='active'>" + codeArray[i] + "</span>";
+              } else if(inputArray.length > (i + 2)){
+                html = html + codeArray[i];
+              } else if(inputArray[i] === codeArray[i]){
+                html = html + "<span class='green'>" + codeArray[i] + "</span>";
+              } else if(inputArray[i] !== codeArray[i]){
+                html = html + "<span class='red'>" + codeArray[i] + "</span>";
+              }
+            }
+            //arrays start from zero, length from 1
+            count = inputArray.length - 1;
+            console.log(inputArray);
+            $("#current-script span").eq(count).addClass("active");
+            $("#current-script span").eq(count - 1).removeClass("active");
+            compare(inputArray, codeArray);
+            //debugger
+            return count;
+        };
+    });
+
+  //comapres input to code
+  function compare(inputArray, codeArray){
+    var num = count;
+    console.log("inputArray[num]: " + inputArray[num]);
+    console.log("codeArray[num]: " + codeArray[num]);
+    for (var i = 0; i <= inputArray.length; i++){
+      if (inputArray.join() === codeArray.join()){
+        $("#current-script span").eq(num).addClass("green");
+        $("#current-script span").eq(num).removeClass("red");
+        //stays green
+      }else{
+        $("#current-script span").eq(num).addClass("red");
+        //change red
+        errorCount += 1;
+        return errorCount;
+      };
+      return count;
+    };
+  };
+  //click submit and computes the scores
+
+  $('.submit').on('click', function() {
+    $('#timer').timer('pause');
+    inputTime = $('#timer').data('seconds');
+    $('#myModal').on('shown.bs.modal', function () {
+     $('#myInput').focus()
+       if (inputArray.join() == codeArray.join()){
+         computeWPM(inputTime);
+         computeErrorRate(errorCount);
+           $('#wpm').val(speed);
+           $('#accuracy').val(errorRate);
+        //  alert("Good Job.  Speed = " + speed + " WPM.  Error Rate = " + errorRate +"%");
+       }else{
+         alert("Fix it");
+       };
+       return inputTime;
+   });
+  });
+
+  function computeWPM(time){
+    speed = wordCount / time * 60;
+    return speed;
+  };
+
+  function computeErrorRate(errorCount){
+    if (errorCount == 0){
+      errorRate = 0;
+    }else{
+      errorRate = codeArray.length/errorCount;
+    }
+    return errorRate;
+  };
+
+  // end, first iteration
+
+//Accuracy view
+  // $('.submit').click(function(){
+  //   var inputScript = $('.script-input').val();
+  //   var inputArray = inputScript.split('');
+  //
+  //   if (codeArray.join() == inputArray.join()){
+  //     alert("Hooray");
+  //   } else {
+  //     alert("Too bad");
+  //   };
+  // });
+
+//end, accuracy iteration
+
+
+});

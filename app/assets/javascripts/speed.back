@@ -1,0 +1,22 @@
+$(document).ready(function(){
+
+  if (!gon.codeScript){
+    return;
+  };
+
+  var codeScript = gon.codeScript;
+  var codeArray = codeScript.split('');
+  var count = 0;
+
+  $.each(codeArray, function( key, value ){
+    $('#current-script').append('<span>' + value + '<span>');
+    //return codeArray;
+  });
+
+  $('.script-input').focus(function(){
+    $('#timer').timer();
+  });
+
+
+
+});

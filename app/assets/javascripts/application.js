@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require timer
-//= require typist
+//= require speed
 //= require bootstrap-sprockets
 //= require_tree .
