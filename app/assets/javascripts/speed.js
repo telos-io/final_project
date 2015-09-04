@@ -31,7 +31,6 @@ if (!gon.codeScript){
                   html = html + "<span class='active'>" + codeArray[i] + "</span>";
               } else if(inputArray[i] === codeArray[i]){
                   html = html + "<span class='green'>" + codeArray[i] + "</span>";
-                  errorCount -= 1;
               } else if(shouldCountAsError){
                   html = html + "<span class='red'>" + codeArray[i] + "</span>";
                   errorCount += 1;
@@ -50,10 +49,10 @@ $('.submit').click(function(){
   console.log(codeArray);
     if (inputArray.join() === codeArray.join()){
       wpm = computeWPM(inputTime)
-      alert("Good " + wpm);
+      alert("Good " + wpm + " wpm " + errorCount + " errors");
     }else{
       alert("fix it");
-    }
+      }
   });
 
   function computeWPM(time){
