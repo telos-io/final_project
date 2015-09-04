@@ -26,18 +26,18 @@ if (!gon.codeScript){
            return;
          }else{
             for(var i = 0; i < codeArray.length; i++){
+              var shouldCountAsError = inputArray[i] !== codeArray[i] && i < inputArray.length;
               if(inputArray.length === (i)){
-                html = html + "<span class='active'>" + codeArray[i] + "</span>";
-              } else if(inputArray.length > (i + 2)){
-                html = html + "<span class='green'>" + codeArray[i] + "</span>";
+                  html = html + "<span class='active'>" + codeArray[i] + "</span>";
               } else if(inputArray[i] === codeArray[i]){
-                html = html + "<span class='green'>" + codeArray[i] + "</span>";
-                //errorCount -= 1;
-              } else if(inputArray[i] !== codeArray[i]){
-                html = html + "<span class='red'>" + codeArray[i] + "</span>";
-                //errorCount += 1;
+                  html = html + "<span class='green'>" + codeArray[i] + "</span>";
+                  errorCount -= 1;
+              } else if(shouldCountAsError){
+                  html = html + "<span class='red'>" + codeArray[i] + "</span>";
+                  errorCount += 1;
+              } else {
+                  html = html + codeArray[i];
               }
-              console.log(html);
             }
           }
       $("#current-script").html(html);
