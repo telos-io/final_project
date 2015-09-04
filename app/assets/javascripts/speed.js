@@ -46,7 +46,7 @@ if (!gon.codeScript){
 
 $('.submit').click(function(){
   $('#timer').timer('pause');
-  inputTime = $('#timer').data('seconds');
+  var inputTime = $('#timer').data('seconds');
   console.log(codeArray);
     if (inputArray.join() === codeArray.join()){
       wpm = computeWPM(inputTime)
@@ -57,7 +57,7 @@ $('.submit').click(function(){
   });
 
   function computeWPM(time){
-    wpm = wordCount / inputTime;
+    return wordCount / (time / 60);
   }
 
 });
