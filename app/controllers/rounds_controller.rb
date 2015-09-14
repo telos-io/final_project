@@ -13,6 +13,7 @@ class RoundsController < ApplicationController
     @round = Round.new round_params
     if @round.save
       redirect_to user_path(@user), flash: "Typing Complete"
+    end
   end
 
 end
