@@ -1,8 +1,8 @@
 <div class="jumbotron">
   <h1>Welcome <%= "#{@user.full_name}" %></h1>
 
-  <p><%= link_to "Random Speed Exercise", code_path %></p>
-  <p><%= link_to "Random Accuracy Exercise", code_path %></p>
+  <button class="btn btn-large"><%= link_to "Random Speed Exercise", code_path %></button>
+  <!--button class="btn btn-large"><%= link_to "Random Accuracy Exercise", code_path %></button-->
 </div>
 
 <% if current_user.rounds.present? %>
