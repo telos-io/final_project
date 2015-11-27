@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require timer
 //= require speed
+//= require typed
+//= require typed-intro
 //= require bootstrap-sprockets
 //= require_tree .
