@@ -18,8 +18,8 @@
 @import "bootstrap";
 
 body{
-  background-color: black;
   color:white;
+  background-color: #2C2A2E;
 }
 
 nav a{
@@ -51,7 +51,13 @@ nav a{
  }
 
  //for the typed.js plugin
+
+ .element{
+   font-size:3em;
+ }
+
  .typed-cursor{
+     font-size:3em;
      opacity: 1;
      -webkit-animation: blink 0.7s infinite;
      -moz-animation: blink 0.7s infinite;
@@ -76,4 +82,20 @@ nav a{
 
 .jumbotron{
   color:black;
+  background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #7F758A),
+	color-stop(1, #E4E1E8)
+);
+  background-image: -o-linear-gradient(bottom, #7F758A 0%, #E4E1E8 100%);
+  background-image: -moz-linear-gradient(bottom, #7F758A 0%, #E4E1E8 100%);
+  background-image: -webkit-linear-gradient(bottom, #7F758A 0%, #E4E1E8 100%);
+  background-image: -ms-linear-gradient(bottom, #7F758A 0%, #E4E1E8 100%);
+  background-image: linear-gradient(to bottom, #7F758A 0%, #E4E1E8 100%);
+}
+
+nav .btn-default{
+  background-color:grey;
 }

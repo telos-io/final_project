@@ -12,28 +12,27 @@
 <!--button class="btn btn-default submit myModal">Submit</button>-->
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg submit">
+<button type="button" class="btn btn-primary btn-lg submit" data-toggle="modal" data-target="#modal">
 Done!</button>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+   <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Scores</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Code Race Results</h4>
       </div>
       <div class="modal-body">
-         <p>WPM: <span id="wpm"></span></p>
-         <p>Error Rate: <span id="accuracy"></span></p>
-      </div>
-      <div class="form control">
-
+        <p>Your Scores:</p>
+        <p>Speed: <span id="wpm"></span></p>
+        <p>Accuracy: <span id="errorCount"></span></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default dismiss" data-dismiss="modal">Once Again Into the Breach!</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Check Your Progress!</button>
       </div>
     </div>
+
   </div>
-</div> -->
+</div>

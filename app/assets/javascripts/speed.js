@@ -9,6 +9,7 @@ if (!gon.codeScript){
   var inputArray = [];
   var errorCount = 0;
   var wpm = 0;
+  var errorRate = 0;
 
   $('#current-script').html(codeScript);
 
@@ -20,7 +21,6 @@ if (!gon.codeScript){
       inputText = $(this).val();
       inputArray = inputText.split('');
       var html   = "";
-      console.log(inputArray);
       var keyCode = event.keyCode;
          if (keyCode == 16){
            return;
@@ -46,17 +46,31 @@ if (!gon.codeScript){
 $('.submit').click(function(){
   $('#timer').timer('pause');
   var inputTime = $('#timer').data('seconds');
-  console.log(codeArray);
     if (inputArray.join() === codeArray.join()){
-      wpm = computeWPM(inputTime)
-      alert("Good " + wpm + " wpm " + errorCount + " errors");
+      wpm = computeWPM(inputTime);
+      errorRate = computeErrorRate(errorCount);
+      return wpm, errorRate;
     }else{
       alert("fix it");
-      }
+    }
   });
 
   function computeWPM(time){
     return wordCount / (time / 60);
   }
+
+  console.log(wpm, errorRate)
+
+  function computeErrorRate(errorCount){
+    return errorRate = ((inputArray.length - errorCount) / inputArray.length) * 100;
+  }
+  // $('#modal').modal('hide', function(wpm, errorRate) {
+  //   $('#wpm').html(wpm);
+  //   $('#errorRate').html(errorRate);
+  // });
+
+  $(".dismiss").click(function(){
+    location.reload();
+  });
 
 });
