@@ -8,8 +8,8 @@ if (!gon.codeScript){
   var wordCount = codeArray.length / 5;
   var inputArray = [];
   var errorCount = 0;
-  var wpm = 0;
-  var errorRate = 0;
+  var wpm;
+  var errorRate;
 
   $('#current-script').html(codeScript);
 
@@ -40,7 +40,7 @@ if (!gon.codeScript){
             }
           }
       $("#current-script").html(html);
-      //console.log(errorCount);
+      return errorCount;
   });
 
 $('.submit').click(function(){
@@ -49,21 +49,25 @@ $('.submit').click(function(){
     if (inputArray.join() === codeArray.join()){
       wpm = computeWPM(inputTime);
       errorRate = computeErrorRate(errorCount);
-      return wpm, errorRate;
+      console.log(wpm, errorCount);
+      alert(wpm, errorRate)
+      //return wpm, errorCount;
     }else{
       alert("fix it");
     }
+    console.log(wpm, errorRate)
   });
+
+  console.log(wpm, errorRate)
 
   function computeWPM(time){
     return wordCount / (time / 60);
   }
 
-  console.log(wpm, errorRate)
-
   function computeErrorRate(errorCount){
     return errorRate = ((inputArray.length - errorCount) / inputArray.length) * 100;
   }
+
   // $('#modal').modal('hide', function(wpm, errorRate) {
   //   $('#wpm').html(wpm);
   //   $('#errorRate').html(errorRate);

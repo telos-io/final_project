@@ -1,6 +1,10 @@
-
-<h2>Sample Code</h2>
-<div id="timer"></div>
+<div class="row">
+  <div class="code-title col-md-8"><h2>Sample Code</h2>
+  </div>
+  <div class="col-md-4">
+    <h3>Time: <span id="timer">&nbsp<span></h3>
+  </div>
+</div>
 <pre id="current-script">
 <%#= render "code.json.erb" %>
 </pre>
@@ -29,8 +33,8 @@ Done!</button>
         <p>Accuracy: <span id="errorCount"></span></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default dismiss" data-dismiss="modal">Once Again Into the Breach!</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Check Your Progress!</button>
+        <button type="button" class="btn btn-default dismiss" data-dismiss="modal"><i class="glyphicon glyphicon-repeat"></i> Once Again Into the Breach!</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-object-align-bottom"></i> Check Your Progress!</button>
       </div>
     </div>
 
