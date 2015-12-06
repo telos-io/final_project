@@ -47,18 +47,16 @@ $('.submit').click(function(){
   $('#timer').timer('pause');
   var inputTime = $('#timer').data('seconds');
     if (inputArray.join() === codeArray.join()){
-      wpm = computeWPM(inputTime);
-      errorRate = computeErrorRate(errorCount);
-      console.log(wpm, errorCount);
-      alert(wpm, errorRate)
-      //return wpm, errorCount;
+      wpm = computeWPM(inputTime).toFixed(1);
+      errorRate = computeErrorRate(errorCount).toFixed(2);
+      $('#wpm').html(wpm + " words per minute");
+      $('#errorRate').html(errorRate + "%");
     }else{
-      alert("fix it");
+      alert("Fix it");
     }
     console.log(wpm, errorRate)
+    return wpm, errorRate;
   });
-
-  console.log(wpm, errorRate)
 
   function computeWPM(time){
     return wordCount / (time / 60);
@@ -68,10 +66,6 @@ $('.submit').click(function(){
     return errorRate = ((inputArray.length - errorCount) / inputArray.length) * 100;
   }
 
-  // $('#modal').modal('hide', function(wpm, errorRate) {
-  //   $('#wpm').html(wpm);
-  //   $('#errorRate').html(errorRate);
-  // });
 
   $(".dismiss").click(function(){
     location.reload();
