@@ -4,12 +4,17 @@ if (!gon.codeScript){
   return;
 }
   var codeScript = gon.codeScript;
+  var codeScriptId = gon.codeScriptId;
+  var currentUser = gon.currentUser
   var codeArray = codeScript.split('');
   var wordCount = codeArray.length / 5;
   var inputArray = [];
   var errorCount = 0;
-  var wpm;
-  var errorRate;
+  var wpm = 0;
+  var errorRate = 0;
+  var round = {};
+
+  console.log(codeScriptId, currentUser)
 
   $('#current-script').html(codeScript);
 
@@ -47,15 +52,31 @@ $('.submit').click(function(){
   $('#timer').timer('pause');
   var inputTime = $('#timer').data('seconds');
     if (inputArray.join() === codeArray.join()){
-      wpm = computeWPM(inputTime).toFixed(1);
-      errorRate = computeErrorRate(errorCount).toFixed(2);
+      wpm = parseInt(computeWPM(inputTime).toFixed(1));
+      errorRate = parseInt(computeErrorRate(errorCount).toFixed(2));
       $('#wpm').html(wpm + " words per minute");
       $('#errorRate').html(errorRate + "%");
+      round = {
+        currentUser: currentUser,
+        codeScriptId: codeScriptId,
+        wpm: wpm,
+        accuracy: errorRate
+      };
+      $.ajax({
+        url: "/users/" + currentUser + "/rounds",
+        type: "post",
+        data: {round: JSON.stringify(round)},
+        success: function(events){
+         console.log("success");
+        },
+        error: function(){
+         console.log("error");
+        }
+      });
     }else{
       alert("Fix it");
     }
-    console.log(wpm, errorRate)
-    return wpm, errorRate;
+    return round;
   });
 
   function computeWPM(time){
@@ -68,6 +89,7 @@ $('.submit').click(function(){
 
 
   $(".dismiss").click(function(){
+    console.log(round)
     location.reload();
   });
 

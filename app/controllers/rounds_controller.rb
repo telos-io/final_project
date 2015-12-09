@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, only: [:create, :new]
 
   def new
     @round = Round.new

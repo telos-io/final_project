@@ -19,6 +19,7 @@ gem 'gon'
 gem 'simple_form'
 gem 'newrelic_rpm'
 gem 'rails_12factor'
+gem 'hirb'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
