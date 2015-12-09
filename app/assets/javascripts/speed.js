@@ -63,10 +63,12 @@ $('.submit').click(function(){
         accuracy: errorRate
       };
       $.ajax({
-        url: "/users/" + currentUser + "/rounds",
+        url: "/users/" + currentUser + "/rounds/create",
         type: "post",
+        contentType: 'application/json',
+        dataType: "json",
         data: {round: JSON.stringify(round)},
-        success: function(events){
+        success: function(){
          console.log("success");
         },
         error: function(){
@@ -86,7 +88,6 @@ $('.submit').click(function(){
   function computeErrorRate(errorCount){
     return errorRate = ((inputArray.length - errorCount) / inputArray.length) * 100;
   }
-
 
   $(".dismiss").click(function(){
     console.log(round)
