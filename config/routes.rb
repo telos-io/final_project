@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
-  resources :codes, only: [:show]
-
   root 'codes#index'
 
   resources :users do
+    resources :codes, only: [:show]
+  end
+
+  resources :codes do
     resources :rounds, only: [:new, :create]
   end
+
+  post 'users/:user_id/rounds/:id', to: 'rounds#create'
 
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection

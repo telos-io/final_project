@@ -63,11 +63,11 @@ $('.submit').click(function(){
         accuracy: errorRate
       };
       $.ajax({
-        url: "/users/" + currentUser + "/rounds/create",
+        url: "/users/" + currentUser + "/rounds/" + codeScriptId,
         type: "post",
         contentType: 'application/json',
         dataType: "json",
-        data: {round: JSON.stringify(round)},
+        data: JSON.stringify(round),
         success: function(){
          console.log("success");
         },

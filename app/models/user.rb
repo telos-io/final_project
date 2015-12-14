@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :rounds
+  has_many :codes
 
   validates :first_name, presence: true
   validates :last_name, presence: true

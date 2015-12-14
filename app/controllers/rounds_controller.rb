@@ -7,11 +7,13 @@ class RoundsController < ApplicationController
   end
 
   def create
-    @round.user = current_user
-    @code = Code.find params[:code_id]
     round_params = params.require(:round).permit(:code_id, :user_id, :wpm, :accuracy)
     @round = Round.new round_params
-    @round.save
+    @round.user_id = current_user.id
+    @round.code_id = Code.find params[:id]
+    if @round.save
+      render :nothing => true
+    end
   end
 
 end

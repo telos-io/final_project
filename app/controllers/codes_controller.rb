@@ -2,10 +2,12 @@ class CodesController < ApplicationController
 
   before_action :authenticate_user!, only: [:show]
 
-  def index
+  def new
+    @code = Code.order_by_rand.first
   end
 
   def show
+    @user = current_user.id
     @code = Code.order_by_rand.first
     gon.codeScript = @code.script
     gon.codeScriptId = @code.id
