@@ -8,12 +8,13 @@
 <div class="jumbotron">
   <h3>History</h3>
   <% if current_user.rounds.present? %>
-    <div>
-      <h4>Last Round</h4>
-      <p>Words Per Minutes: <%= @user.rounds.last.wpm %></p>
-      <p>Keystroke Accuracy: <%= @user.rounds.last.accuracy %>%</p>
-      <p>Session Date: <%= @user.rounds.last.created_at %>%</p>
-    </div>
+    <% @user.rounds.each do |rounds| %>
+      <div class="well">
+        <p>Words Per Minutes: <%= rounds.wpm %></p>
+        <p>Keystroke Accuracy: <%= rounds.accuracy %>%</p>
+        <p>Session Date: <%= rounds.created_at %>%</p>
+      </div>
+    <% end %>
   <% else %>
     <p>No typing rounds yet</p>
   <% end %>
