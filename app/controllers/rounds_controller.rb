@@ -9,8 +9,8 @@ class RoundsController < ApplicationController
   def create
     round_params = params.require(:round).permit(:code_id, :user_id, :wpm, :accuracy)
     @round = Round.new round_params
-    @round.user_id = current_user.id
-    @round.code_id = Code.find params[:id]
+    #@round.user_id = current_user.id
+    #@round.code_id = Code.find params[:id]
     if @round.save
       render :nothing => true
     end

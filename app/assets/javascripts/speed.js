@@ -57,8 +57,8 @@ $('.submit').click(function(){
       $('#wpm').html(wpm + " words per minute");
       $('#errorRate').html(errorRate + "%");
       round = {
-        currentUser: currentUser,
-        codeScriptId: codeScriptId,
+        code_id: codeScriptId,
+        user_id: currentUser,
         wpm: wpm,
         accuracy: errorRate
       };

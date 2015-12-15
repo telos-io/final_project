@@ -9,7 +9,7 @@
   <h3>History</h3>
   <% if current_user.rounds.present? %>
     <div>
-      <h2>Last Round</h2>
+      <h4>Last Round</h4>
       <p>Words Per Minutes: <%= @user.rounds.last.wpm %></p>
       <p>Keystroke Accuracy: <%= @user.rounds.last.accuracy %>%</p>
       <p>Session Date: <%= @user.rounds.last.created_at %>%</p>
