@@ -8,14 +8,24 @@
 <div class="jumbotron">
   <h3>History</h3>
   <% if current_user.rounds.present? %>
+  <div class="row well">
+    <span class="col-md-6"> Average Speed: <%= @user.rounds.average(:wpm) %> WPM</span>
+    <span class="col-md-6"> Average Accuracy: <%= @user.rounds.average(:accuracy) %> %</span>
+  </div>
+    <div class="well">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
     <% @user.rounds.each do |rounds| %>
       <div class="well">
         <p>Words Per Minutes: <%= rounds.wpm %></p>
         <p>Keystroke Accuracy: <%= rounds.accuracy %>%</p>
-        <p>Session Date: <%= rounds.created_at %>%</p>
+        <p>Session Date: <%= rounds.created_at %></p>
+        <p>Notes: <%= rounds.note %></p>
       </div>
     <% end %>
   <% else %>
     <p>No typing rounds yet</p>
   <% end %>
 </div>
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js" %>

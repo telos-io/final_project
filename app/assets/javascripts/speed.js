@@ -14,8 +14,6 @@ if (!gon.codeScript){
   var errorRate = 0;
   var round = {};
 
-  console.log(codeScriptId, currentUser)
-
   $('#current-script').html(codeScript);
 
   $('.script-input').focus(function(){
@@ -54,13 +52,16 @@ $('.submit').click(function(){
     if (inputArray.join() === codeArray.join()){
       wpm = parseInt(computeWPM(inputTime).toFixed(1));
       errorRate = parseInt(computeErrorRate(errorCount).toFixed(2));
+      var notes = $('#notes').val();
+      console.log
       $('#wpm').html(wpm + " words per minute");
       $('#errorRate').html(errorRate + "%");
       round = {
         code_id: codeScriptId,
         user_id: currentUser,
         wpm: wpm,
-        accuracy: errorRate
+        accuracy: errorRate,
+        note: notes
       };
       $.ajax({
         url: "/users/" + currentUser + "/rounds/" + codeScriptId,
@@ -90,7 +91,6 @@ $('.submit').click(function(){
   }
 
   $(".dismiss").click(function(){
-    console.log(round)
     location.reload();
   });
 
