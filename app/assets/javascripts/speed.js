@@ -13,6 +13,7 @@ if (!gon.codeScript){
   var wpm = 0;
   var errorRate = 0;
   var round = {};
+  var note = "";
 
   $('#current-script').html(codeScript);
 
@@ -52,35 +53,41 @@ $('.submit').click(function(){
     if (inputArray.join() === codeArray.join()){
       wpm = parseInt(computeWPM(inputTime).toFixed(1));
       errorRate = parseInt(computeErrorRate(errorCount).toFixed(2));
-      var notes = $('#notes').val();
-      console.log
       $('#wpm').html(wpm + " words per minute");
       $('#errorRate').html(errorRate + "%");
+      $('#note_submit').click(function(){
+        note = $("#note").val();
+        console.log(note)
+        return note
+      });
       round = {
         code_id: codeScriptId,
         user_id: currentUser,
         wpm: wpm,
         accuracy: errorRate,
-        note: notes
+        note: note
       };
-      $.ajax({
-        url: "/users/" + currentUser + "/rounds/" + codeScriptId,
-        type: "post",
-        contentType: 'application/json',
-        dataType: "json",
-        data: JSON.stringify(round),
-        success: function(){
-         console.log("success");
-        },
-        error: function(){
-         console.log("error");
-        }
-      });
     }else{
       alert("Fix it");
     }
     return round;
   });
+
+  function postRound(round){
+    $.ajax({
+      url: "/users/" + currentUser + "/rounds/" + codeScriptId,
+      type: "post",
+      contentType: 'application/json',
+      dataType: "json",
+      data: JSON.stringify(round),
+      success: function(){
+       console.log("success");
+      },
+      error: function(){
+       console.log("error");
+      }
+    });
+  }
 
   function computeWPM(time){
     return wordCount / (time / 60);
@@ -89,6 +96,16 @@ $('.submit').click(function(){
   function computeErrorRate(errorCount){
     return errorRate = ((inputArray.length - errorCount) / inputArray.length) * 100;
   }
+
+  $("#reload").click(function(round, postRound){
+    console.log(round);
+    postRound(round);
+  })
+
+  $("#progress").click(function(round, postRound){
+    console.log(round);
+    postRound(round);
+  })
 
   $(".dismiss").click(function(){
     location.reload();

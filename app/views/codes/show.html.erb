@@ -32,15 +32,19 @@ Done!</button>
         <p>Speed: <span id="wpm"></span></p>
         <p>Accuracy: <span id="errorRate"></span></p>
         <p>Notes:</p>
-          <form id="notes">
-            <textarea class="form-control"></textarea>
-          </form>
+        <form class="form-group">
+          <textarea class="form-control" id="note"></textarea>
+          <button type="button" class="btn btn-default" id="note_submit">
+            <i class="glyphicon glyphicon-repeat"></i> Submit
+          </button>
+        </form>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default dismiss" data-dismiss="modal">
+        <button type="button" class="btn btn-default dismiss" id="reload" data-dismiss="modal">
           <i class="glyphicon glyphicon-repeat"></i> Once Again Into the Breach!
         </button>
-        <button type="button" class="btn btn-default">
+        <button type="button" class="btn btn-default" id="progress">
           <i class="glyphicon glyphicon-object-align-bottom"></i> <%= link_to "Check Your Progress", user_path %>
         </button>
       </div>
