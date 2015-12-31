@@ -5,7 +5,12 @@
   </div>
   <p>Get stuck into the typing app for developers.</p>
   <div>
-    <button class="btn btn-success"><%= link_to "Sign Up", new_user_path %></button>
-    <button class="btn btn-default"><%= link_to "Sign In", new_session_path %></button>
+    <% if current_user %>
+     <h3>Welcome #{current_user.name}</h3>
+  <% else %>
+     <button class="btn btn-default"><%= link_to "Sign in with Github", "/auth/github" %></button>
+     <button class="btn btn-success"><%= link_to "Sign Up", new_user_path %></button>
+     <button class="btn btn-default"><%= link_to "Sign In", new_session_path %></button>
+  <% end %>
   </div>
 </div>

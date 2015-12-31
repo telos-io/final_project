@@ -55,11 +55,6 @@ $('.submit').click(function(){
       errorRate = parseInt(computeErrorRate(errorCount).toFixed(2));
       $('#wpm').html(wpm + " words per minute");
       $('#errorRate').html(errorRate + "%");
-      $('#note_submit').click(function(){
-        note = $("#note").val();
-        console.log(note)
-        return note
-      });
       round = {
         code_id: codeScriptId,
         user_id: currentUser,
@@ -73,7 +68,36 @@ $('.submit').click(function(){
     return round;
   });
 
-  function postRound(round){
+  // function postRound(round){
+  //   $.ajax({
+  //     url: "/users/" + currentUser + "/rounds/" + codeScriptId,
+  //     type: "post",
+  //     contentType: 'application/json',
+  //     dataType: "json",
+  //     data: JSON.stringify(round),
+  //     success: function(){
+  //      console.log("success");
+  //     },
+  //     error: function(){
+  //      console.log("error");
+  //     }
+  //   });
+  // }
+
+  function computeWPM(time){
+    return wordCount / (time / 60);
+  }
+
+  function computeErrorRate(errorCount){
+    return errorRate = ((inputArray.length - errorCount) / inputArray.length) * 100;
+  }
+
+  $('#note_submit').click(function(){
+    return note = $("#note").val();
+  });
+
+  $("#reload").click(function(){
+    note = $("#note").val();
     $.ajax({
       url: "/users/" + currentUser + "/rounds/" + codeScriptId,
       type: "post",
@@ -87,24 +111,24 @@ $('.submit').click(function(){
        console.log("error");
       }
     });
-  }
-
-  function computeWPM(time){
-    return wordCount / (time / 60);
-  }
-
-  function computeErrorRate(errorCount){
-    return errorRate = ((inputArray.length - errorCount) / inputArray.length) * 100;
-  }
-
-  $("#reload").click(function(round, postRound){
-    console.log(round);
-    postRound(round);
   })
 
-  $("#progress").click(function(round, postRound){
-    console.log(round);
-    postRound(round);
+  $("#progress").click(function(){
+    note = $("#note").val();
+    console.log(note);
+    $.ajax({
+      url: "/users/" + currentUser + "/rounds/" + codeScriptId,
+      type: "post",
+      contentType: 'application/json',
+      dataType: "json",
+      data: JSON.stringify(round),
+      success: function(){
+       console.log("success");
+      },
+      error: function(){
+       console.log("error");
+      }
+    });
   })
 
   $(".dismiss").click(function(){

@@ -3,7 +3,7 @@ class CodesController < ApplicationController
   before_action :authenticate_user!, only: [:show]
 
   def new
-    @code = Code.order_by_rand.first
+    #@code = Code.order_by_rand.first
   end
 
   def show
