@@ -21,6 +21,7 @@ gem 'newrelic_rpm'
 gem 'rails_12factor'
 gem 'hirb'
 gem "omniauth-github"
+gem "figaro"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
