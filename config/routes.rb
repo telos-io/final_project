@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :codes, only: [:show]
   end
 
-  get "/auth/:provider/callback", to: "sessions#create"
 
   resources :codes do
     resources :rounds, only: [:new, :create]
