@@ -13,7 +13,7 @@
 
     <nav class="nav">
       <% if user_signed_in? %>
-        <button class="btn btn-default"><%= link_to "Your Profile", user_path %></button>
+        <button class="btn btn-default"><%= link_to "Your Profile", user_path(@user.id) %></button>
         <div class="pull-right">
           <span>Hello <%= current_user.full_name %>,</span>
           <button class="btn btn-danger"><%= link_to "Logout", sessions_path, method: :delete,
