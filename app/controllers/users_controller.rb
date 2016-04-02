@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @code = Code.order_by_rand.first
+    @code = Code.order_by_rand.first.id
     #@round = @user.rounds_for(:user_id)
   end
 

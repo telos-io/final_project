@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       else
         flash[:alert] = "Wrong Credentials"
         render :new
+      end
   end
 
   def destroy
